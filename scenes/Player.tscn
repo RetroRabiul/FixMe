@@ -153,7 +153,6 @@ scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "attack"
 frame = 8
-playing = true
 offset = Vector2( 1.5, -5 )
 
 [node name="AttackNode" type="Node2D" parent="."]

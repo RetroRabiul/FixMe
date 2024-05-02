@@ -28,7 +28,7 @@ shape = SubResource( 1 )
 [node name="KillArea" type="Area2D" parent="."]
 position = Vector2( 0, -6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+[node name="KillCollision" type="CollisionShape2D" parent="KillArea"]
 position = Vector2( 0, 7 )
 shape = SubResource( 2 )
 
@@ -36,7 +36,7 @@ shape = SubResource( 2 )
 collision_layer = 3
 collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DieArea"]
+[node name="DieCollision" type="CollisionShape2D" parent="DieArea"]
 position = Vector2( 0, -6.5 )
 shape = SubResource( 3 )
 

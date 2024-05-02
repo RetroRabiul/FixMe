@@ -11,7 +11,7 @@ var direction := Vector2.ZERO
 
 var pushed_up = false
 
-var attacking = true
+var attacking = false
 
 var used_portal = false
 
@@ -45,16 +45,16 @@ func _input(event):
 	direction.x = 0
 	
 	if Input.is_action_pressed("left"):
-		direction.x += speed
-				
-		$PlayerAnim.flip_h = false
+		direction.x -= speed
+		$AttackNode.scale.x = -1
+		$PlayerAnim.flip_h = true
 		if not attacking:
 			$PlayerAnim.play("walk")
 		
 	elif Input.is_action_pressed("right"):
-		direction.x -= speed
-		
-		$PlayerAnim.flip_h = true
+		direction.x += speed
+		$AttackNode.scale.x = 1
+		$PlayerAnim.flip_h = false
 		if not attacking:
 			$PlayerAnim.play("walk")
 	
@@ -65,7 +65,8 @@ func _input(event):
 			
 		
 	if Input.is_action_just_pressed("attack") and have_sword:
-		attacking = true	
+		attacking = true
+		$PlayerAnim.set_frame(0)
 		$PlayerAnim.play("attack")	
 		$AttackNode/AttackArea/AttackCollision.disabled = false
 			
@@ -108,10 +109,8 @@ func _use_portal(new_position):
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", new_position, 1.0)
 	yield (tween, "finished")
-
+	call_deferred("_collision_on")
 	visible = true
-
-
 
 
 func _collision_off():
