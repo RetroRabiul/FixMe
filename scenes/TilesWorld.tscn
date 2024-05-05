@@ -139,9 +139,9 @@ walk_speed = 70
 walk_time = 1.0
 
 [node name="Goomba2" parent="enemies" instance=ExtResource( 3 )]
-position = Vector2( -1684, 304 )
-walk_speed = 120
-walk_time = 6.0
+position = Vector2( -1692, 304 )
+walk_speed = 50
+walk_time = 4.0
 
 [node name="Goomba3" parent="enemies" instance=ExtResource( 3 )]
 position = Vector2( -2096, 47 )
@@ -176,6 +176,6 @@ position = Vector2( -281, 14.5 )
 shape = SubResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -273, 214 )
+position = Vector2( -284, 203 )
 
 [connection signal="body_entered" from="FallArea" to="." method="_on_FallArea_body_entered"]

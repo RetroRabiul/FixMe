@@ -1,20 +1,13 @@
 extends Sprite
 
-var total_crystal = 0
 
 export(NodePath) var crystals_path
 onready var all_crystals = get_node(crystals_path)
 
-func _ready():
-	GlobalSignals.connect("crystal_collected", self, "_crystal_collected")
-
-func _crystal_collected(crystal_count):
-	total_crystal = crystal_count
-
 
 func _check_crystals():
 	var crystal_count = all_crystals.get_child_count()
-	if crystal_count == total_crystal:
+	if crystal_count == 0:
 		print ("YOU WIN")
 		get_tree().change_scene("res://scenes/GameOver.tscn")
 	else:
