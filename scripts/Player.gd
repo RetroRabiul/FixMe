@@ -26,6 +26,12 @@ func _ready():
 	GlobalSignals.connect("use_portal", self, "_use_portal")
 	GlobalSignals.connect("player_reset", self, "_player_reset")
 	GlobalSignals.connect("collected_sword", self, "_collected_sword")
+	GlobalSignals.connect("trampoline", self, "_trampoline")
+
+
+func _trampoline():
+	direction.y = jump_speed * 2
+
 
 func _player_reset():
 	global_position = start_position
