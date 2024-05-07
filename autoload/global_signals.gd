@@ -11,7 +11,11 @@ signal trampoline()
 
 signal use_portal(new_position)
 
-signal player_reset(life)
+signal player_reset()
+
+signal player_fall()
+
+signal change_life()
 
 signal collected_sword()
 

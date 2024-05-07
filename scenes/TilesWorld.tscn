@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Sword.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Trampoline.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Sign.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=8]
+[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/SayemArt/wall1.png" type="Texture" id=10]
 [ext_resource path="res://assets/SayemArt/wall2.png" type="Texture" id=11]
 [ext_resource path="res://scenes/Portal.tscn" type="PackedScene" id=12]
@@ -177,16 +178,36 @@ position = Vector2( -1319, 809 )
 position = Vector2( -281, 14.5 )
 shape = SubResource( 9 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -395, 158 )
-
-[node name="Trampoline" parent="." instance=ExtResource( 6 )]
-position = Vector2( -247, 328 )
-
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.7, 0.7 )
 script = ExtResource( 8 )
 TargetNodePath = NodePath("../Player")
 
+[node name="UI" parent="Camera" instance=ExtResource( 9 )]
+
+[node name="CrystalLabel" parent="Camera/UI" index="0"]
+margin_left = -351.0
+margin_top = -204.0
+margin_right = -202.0
+margin_bottom = -131.0
+
+[node name="SignText" parent="Camera/UI" index="1"]
+margin_top = -120.0
+margin_bottom = -40.0
+
+[node name="LifeLabel" parent="Camera/UI" index="2"]
+margin_left = 220.0
+margin_top = -204.0
+margin_right = 321.0
+margin_bottom = -161.0
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -395, 158 )
+
+[node name="Trampoline" parent="." instance=ExtResource( 6 )]
+position = Vector2( -247, 328 )
+
 [connection signal="body_entered" from="FallArea" to="." method="_on_FallArea_body_entered"]
+
+[editable path="Camera/UI"]

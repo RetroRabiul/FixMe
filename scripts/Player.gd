@@ -29,6 +29,7 @@ func _ready():
 	start_position.y -= 200
 	GlobalSignals.connect("use_portal", self, "_use_portal")
 	GlobalSignals.connect("player_reset", self, "_player_reset")
+	GlobalSignals.connect("player_fall", self, "_player_fall")
 	GlobalSignals.connect("collected_sword", self, "_collected_sword")
 	GlobalSignals.connect("trampoline", self, "_trampoline")
 	print(player_life)
@@ -37,9 +38,12 @@ func _ready():
 func _trampoline():
 	direction.y = jump_speed * 2
 
+func _player_fall():
+	global_position = start_position
 
-func _player_reset(life):
+func _player_reset():
 	player_life -= 1
+	GlobalSignals.emit_signal("change_life")
 	if player_life == 0 :
 		get_tree().change_scene("res://scenes/GameOver.tscn")
 	else: 

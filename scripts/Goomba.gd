@@ -8,8 +8,6 @@ var direction = Vector2.ZERO
 
 export var walk_time:float = 3
 
-var life = 1
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$WalkTimer.wait_time = walk_time
@@ -34,7 +32,7 @@ func _on_WalkTimer_timeout():
 
 func _on_KillArea_body_entered(body):
 	if body.is_in_group("player"):
-		GlobalSignals.emit_signal("player_reset", life)
+		GlobalSignals.emit_signal("player_reset")
 #		queue_free()
 		
 
