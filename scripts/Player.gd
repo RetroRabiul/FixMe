@@ -19,6 +19,8 @@ var start_position = Vector2.ZERO
 
 var have_sword = false
 
+onready var coyote_timer = $CoyoteTimer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_position = global_position
@@ -86,8 +88,11 @@ func _process(delta):
 	
 			
 	if Input.is_action_just_pressed("jump") and not flying:
-		if is_grounded:
+		if is_grounded || !coyote_timer.is_stopped():
 			direction.y = jump_speed
+	
+#	if is_grounded && !coyote_timer.is_stopped():
+#			direction.y = jump_speed
 	
 	
 	if Input.is_action_pressed("down") and flying:
@@ -96,7 +101,10 @@ func _process(delta):
 	if Input.is_action_pressed("jump") and flying:
 		direction.y = jump_speed
 	
-
+	if is_grounded && !is_on_floor() :
+		coyote_timer.start()
+	
+	
 	direction = move_and_slide(direction,  Vector2.UP)
 	
 

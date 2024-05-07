@@ -174,10 +174,6 @@ shape = SubResource( 2 )
 
 [node name="FlyTime" type="Timer" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -69 )
-current = true
-
 [node name="RayCastFloor" type="RayCast2D" parent="."]
 position = Vector2( 7, 9 )
 enabled = true
@@ -202,6 +198,10 @@ margin_left = -139.0
 margin_top = -143.0
 margin_right = 161.0
 margin_bottom = -63.0
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
 
 [connection signal="animation_finished" from="PlayerAnim" to="." method="_on_PlayerAnim_animation_finished"]
 
