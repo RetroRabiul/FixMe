@@ -19,6 +19,8 @@ var start_position = Vector2.ZERO
 
 var have_sword = false
 
+var player_life = 3
+
 onready var coyote_timer = $CoyoteTimer
 
 # Called when the node enters the scene tree for the first time.
@@ -29,14 +31,20 @@ func _ready():
 	GlobalSignals.connect("player_reset", self, "_player_reset")
 	GlobalSignals.connect("collected_sword", self, "_collected_sword")
 	GlobalSignals.connect("trampoline", self, "_trampoline")
+	print(player_life)
 
 
 func _trampoline():
 	direction.y = jump_speed * 2
 
 
-func _player_reset():
-	global_position = start_position
+func _player_reset(life):
+	player_life -= 1
+	if player_life == 0 :
+		get_tree().change_scene("res://scenes/GameOver.tscn")
+	else: 
+		global_position = start_position
+		print(player_life)
 	
 func _collected_sword():
 	have_sword = true
@@ -90,9 +98,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("jump") and not flying:
 		if is_grounded || !coyote_timer.is_stopped():
 			direction.y = jump_speed
-	
-#	if is_grounded && !coyote_timer.is_stopped():
-#			direction.y = jump_speed
 	
 	
 	if Input.is_action_pressed("down") and flying:

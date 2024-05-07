@@ -191,6 +191,9 @@ margin_left = -479.0
 margin_top = -344.0
 margin_right = -354.0
 margin_bottom = -271.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="SignText" parent="UI" index="1"]
 visible = false
@@ -198,6 +201,12 @@ margin_left = -139.0
 margin_top = -143.0
 margin_right = 161.0
 margin_bottom = -63.0
+
+[node name="LifeLabel" parent="UI" index="2"]
+margin_left = 197.0
+margin_top = -229.0
+margin_right = 333.0
+margin_bottom = -186.0
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15

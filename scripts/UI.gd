@@ -18,6 +18,6 @@ func _hide_sign():
 	
 func _crystal_collected():
 	crystal_count += 1
-	$CrystalLabel.text = "Crystals: "+str(crystal_count)
+	$CrystalLabel.text = "Crystals : "+str(crystal_count)
 #	GlobalSignals.emit_signal("crystal_sum",crystal_count)
 
