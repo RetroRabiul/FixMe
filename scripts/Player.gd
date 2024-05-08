@@ -43,6 +43,7 @@ func _life_collected():
 	print(player_life)
 
 func _trampoline():
+	$TampolineSound.play()
 	direction.y = jump_speed * 2
 
 func _player_fall():
@@ -62,10 +63,6 @@ func _collected_sword():
 
 func _can_fly(state):
 	flying = state
-
-func _push_up():
-	pushed_up = true
-
 
 func _input(event):
 	
@@ -110,14 +107,15 @@ func _process(delta):
 			
 	if Input.is_action_just_pressed("jump") and not flying:
 		if is_grounded || !coyote_timer.is_stopped():
+			$JumpSound.play()
 			direction.y = jump_speed
 	
 	
 	if Input.is_action_pressed("down") and flying:
 		direction.y = -jump_speed
-
-	if Input.is_action_pressed("jump") and flying:
-		direction.y = jump_speed
+#
+#	if Input.is_action_pressed("jump") and flying:
+#		direction.y = jump_speed
 	
 	if is_grounded && !is_on_floor() :
 		coyote_timer.start()

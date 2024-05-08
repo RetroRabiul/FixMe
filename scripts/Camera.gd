@@ -4,12 +4,6 @@ export(NodePath) var TargetNodePath = null
 var target_node
 export (float) var lerpspeed = 0.65
 
-#onready var linked_portal = get_node(linked_portal_path)
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

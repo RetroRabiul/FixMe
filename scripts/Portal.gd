@@ -10,8 +10,6 @@ func _ready():
 
 
 
-
-
 func _on_PortalArea_body_entered(body):
 	if body.is_in_group("player"):
 #		not body.used_portal

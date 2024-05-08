@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/props/Yellow Crystal.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Crystal.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/Pickup_coin.mp3" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.5, 14 )
@@ -21,6 +22,9 @@ texture = ExtResource( 1 )
 position = Vector2( 0.5, -2 )
 shape = SubResource( 1 )
 disabled = true
+
+[node name="CollectedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [node name="Detect" type="Area2D" parent="."]
 
