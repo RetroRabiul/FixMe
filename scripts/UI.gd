@@ -9,6 +9,12 @@ func _ready():
 	GlobalSignals.connect("hide_sign", self, "_hide_sign")
 	GlobalSignals.connect("crystal_collected", self, "_crystal_collected")
 	GlobalSignals.connect("change_life", self, "_change_life")
+	GlobalSignals.connect("life_collected", self, "_life_collected")
+	$LifeLabel.text = "Life : " +str(life)
+
+
+func _life_collected():
+	life += 1
 	$LifeLabel.text = "Life : " +str(life)
 
 func _change_life():

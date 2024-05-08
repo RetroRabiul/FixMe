@@ -167,6 +167,20 @@ rotation = 1.19528
 shape = SubResource( 26 )
 disabled = true
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AttackNode/AttackArea"]
+position = Vector2( 2.67409, -5.81801 )
+rotation = -0.243914
+scale = Vector2( 1, 1 )
+emitting = false
+amount = 12
+lifetime = 0.7
+preprocess = 2.0
+speed_scale = 2.0
+explosiveness = 0.27
+randomness = 0.27
+emission_shape = 1
+emission_sphere_radius = 10.0
+
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -2, 0 )
 shape = SubResource( 2 )

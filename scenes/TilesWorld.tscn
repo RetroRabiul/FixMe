@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Sword.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/Portal.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/TilesWorld.gd" type="Script" id=13]
 [ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Life.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -69,6 +70,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 extents = Vector2( 1882, 24.5 )
 
 [node name="TilesWorld" type="Node2D"]
+position = Vector2( 37, -13 )
 script = ExtResource( 13 )
 
 [node name="PlatformTiles" type="TileMap" parent="."]
@@ -100,7 +102,7 @@ move_to = Vector2( 0, -600 )
 move_time = 4.0
 
 [node name="Sword" parent="." instance=ExtResource( 2 )]
-position = Vector2( -801, 166 )
+position = Vector2( -347, 225 )
 
 [node name="Crystals" type="Node2D" parent="."]
 
@@ -207,6 +209,9 @@ position = Vector2( -395, 158 )
 
 [node name="Trampoline" parent="." instance=ExtResource( 6 )]
 position = Vector2( -247, 328 )
+
+[node name="Life" parent="." instance=ExtResource( 15 )]
+position = Vector2( -552, 334 )
 
 [connection signal="body_entered" from="FallArea" to="." method="_on_FallArea_body_entered"]
 

@@ -32,8 +32,13 @@ func _ready():
 	GlobalSignals.connect("player_fall", self, "_player_fall")
 	GlobalSignals.connect("collected_sword", self, "_collected_sword")
 	GlobalSignals.connect("trampoline", self, "_trampoline")
+	GlobalSignals.connect("life_collected", self, "_life_collected")
 	print(player_life)
 
+
+func _life_collected():
+	player_life += 1
+	print(player_life)
 
 func _trampoline():
 	direction.y = jump_speed * 2
@@ -87,6 +92,7 @@ func _input(event):
 	if Input.is_action_just_pressed("attack") and have_sword:
 		attacking = true
 		$PlayerAnim.set_frame(0)
+		$AttackNode/AttackArea/CPUParticles2D.emitting = true
 		$PlayerAnim.play("attack")	
 		$AttackNode/AttackArea/AttackCollision.disabled = false
 			
@@ -120,6 +126,8 @@ func _process(delta):
 
 func _on_PlayerAnim_animation_finished():
 	if $PlayerAnim.animation == "attack":
+		
+		$AttackNode/AttackArea/CPUParticles2D.emitting = false
 		attacking = false
 		$AttackNode/AttackArea/AttackCollision.disabled = true
 

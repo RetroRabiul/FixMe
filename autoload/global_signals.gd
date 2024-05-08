@@ -17,6 +17,8 @@ signal player_fall()
 
 signal change_life()
 
+signal life_collected()
+
 signal collected_sword()
 
 
