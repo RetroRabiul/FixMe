@@ -134,7 +134,7 @@ func _on_PlayerAnim_animation_finished():
 
 func _use_portal(new_position):
 	direction = Vector2.ZERO
-	
+	$PortalSound.play()
 	visible = false
 	
 	call_deferred("_collision_off")
