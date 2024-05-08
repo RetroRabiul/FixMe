@@ -15,7 +15,7 @@ signal player_reset()
 
 signal player_fall()
 
-signal change_life()
+signal change_life(lives)
 
 signal life_collected()
 

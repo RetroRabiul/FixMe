@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/player2/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/RETRO_Bump_Hit_Beep.mp3" type="AudioStream" id=3]
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
@@ -200,5 +201,8 @@ cast_to = Vector2( 0, 19 )
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="animation_finished" from="PlayerAnim" to="." method="_on_PlayerAnim_animation_finished"]

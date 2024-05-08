@@ -33,11 +33,13 @@ func _ready():
 	GlobalSignals.connect("collected_sword", self, "_collected_sword")
 	GlobalSignals.connect("trampoline", self, "_trampoline")
 	GlobalSignals.connect("life_collected", self, "_life_collected")
+	GlobalSignals.emit_signal("change_life", player_life)
 	print(player_life)
 
 
 func _life_collected():
 	player_life += 1
+	GlobalSignals.emit_signal("change_life", player_life)
 	print(player_life)
 
 func _trampoline():
@@ -48,7 +50,7 @@ func _player_fall():
 
 func _player_reset():
 	player_life -= 1
-	GlobalSignals.emit_signal("change_life")
+	GlobalSignals.emit_signal("change_life", player_life)
 	if player_life == 0 :
 		get_tree().change_scene("res://scenes/GameOver.tscn")
 	else: 
@@ -93,7 +95,8 @@ func _input(event):
 		attacking = true
 		$PlayerAnim.set_frame(0)
 		$AttackNode/AttackArea/CPUParticles2D.emitting = true
-		$PlayerAnim.play("attack")	
+		$PlayerAnim.play("attack")
+		$AttackSound.play()
 		$AttackNode/AttackArea/AttackCollision.disabled = false
 			
 
