@@ -32,4 +32,17 @@ stream = ExtResource( 3 )
 position = Vector2( 0, -1.5 )
 shape = SubResource( 2 )
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 100
+lifetime = 5.0
+speed_scale = 8.15
+emission_shape = 1
+emission_sphere_radius = 18.46
+direction = Vector2( 0, -1 )
+spread = 23.69
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.37
+scale_amount = 1.64
+color = Color( 0.992188, 0.977082, 0.0959244, 1 )
+
 [connection signal="body_entered" from="Detect" to="." method="_on_Detect_body_entered"]
