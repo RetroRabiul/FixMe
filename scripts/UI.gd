@@ -7,8 +7,13 @@ func _ready():
 	GlobalSignals.connect("hide_sign", self, "_hide_sign")
 	GlobalSignals.connect("crystal_collected", self, "_crystal_collected")
 	GlobalSignals.connect("change_life", self, "_change_life")
+	GlobalSignals.connect("Bullets_left", self, "_Bullets_left")
 	$CrystalLabel.text = "Crystals : "+str(GlobalVariables.crystal_count)
+	$BulletLabel.text = "Bullet : " +str(GlobalVariables.bullets)
 
+func _Bullets_left():
+	$BulletLabel.text = "Bullet : " +str(GlobalVariables.bullets)
+	
 
 func _change_life(lives):
 	$LifeLabel.text = "Life : " +str(lives)

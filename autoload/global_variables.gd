@@ -8,3 +8,5 @@ var player_life = 3
 var have_sword = false
 
 var crystal_count = 0
+
+var bullets = 10

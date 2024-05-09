@@ -41,3 +41,9 @@ func _on_DieArea_area_entered(area):
 	if area.is_in_group("player_weapon"):
 #		GlobalSignals.emit_signal("player_reset")
 		queue_free()
+
+
+func _on_DieArea_body_entered(body):
+	if body.is_in_group("ammo"):
+		body.queue_free()
+		queue_free()
