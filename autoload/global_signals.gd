@@ -22,3 +22,5 @@ signal life_collected()
 signal collected_sword()
 
 signal Bullets_left()
+
+signal update_ammo()

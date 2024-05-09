@@ -70,9 +70,12 @@ func _input(event):
 	
 	
 	if Input.is_action_just_pressed("fire"):
-		var bullet = bullet_scene.instance()
-		get_parent().add_child(bullet)
-		bullet.shoot($AttackNode/BulletPos.global_position, Vector2($AttackNode.scale.x,0))
+		if GlobalVariables.bullets > 0 :
+			GlobalVariables.bullets -= 1
+			GlobalSignals.emit_signal("update_ammo")
+			var bullet = bullet_scene.instance()
+			get_parent().add_child(bullet)
+			bullet.shoot($AttackNode/BulletPos.global_position, Vector2($AttackNode.scale.x,0))
 		
 	
 	

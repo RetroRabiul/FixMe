@@ -8,12 +8,12 @@ func _ready():
 	pass 
 
 func shoot(pos, dir):
-	if GlobalVariables.bullets > 0 :
-		global_position = pos
-		scale.x = dir.x
-		velocity = dir * speed
-		GlobalVariables.bullets -= 1
-		GlobalSignals.emit_signal("Bullets_left")
+#	if GlobalVariables.bullets > 0 :
+	global_position = pos
+	scale.x = dir.x
+	velocity = dir * speed
+#		GlobalVariables.bullets -= 1
+#		GlobalSignals.emit_signal("Bullets_left")
 
 func _process(delta):
 	var collided = move_and_collide(velocity * delta)

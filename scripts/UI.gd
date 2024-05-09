@@ -1,6 +1,6 @@
 extends Control
 
-
+var bullet_icon = preload("res://scenes/Bulleticon.tscn")
 
 func _ready():
 	GlobalSignals.connect("show_sign", self, "_show_sign")
@@ -8,8 +8,18 @@ func _ready():
 	GlobalSignals.connect("crystal_collected", self, "_crystal_collected")
 	GlobalSignals.connect("change_life", self, "_change_life")
 	GlobalSignals.connect("Bullets_left", self, "_Bullets_left")
+	GlobalSignals.connect("update_ammo", self, "_update_ammo")
+	_update_ammo()
 	$CrystalLabel.text = "Crystals : "+str(GlobalVariables.crystal_count)
 	$BulletLabel.text = "Bullet : " +str(GlobalVariables.bullets)
+	
+func _update_ammo():
+	for child in $HBoxContainer.get_children():
+		child.queue_free()
+	for bullet in GlobalVariables.bullets:
+		var icon = bullet_icon.instance()
+		$HBoxContainer.add_child(icon)
+		
 
 func _Bullets_left():
 	$BulletLabel.text = "Bullet : " +str(GlobalVariables.bullets)
