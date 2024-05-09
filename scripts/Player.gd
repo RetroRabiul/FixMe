@@ -20,7 +20,7 @@ var start_position = Vector2.ZERO
 onready var coyote_timer = $CoyoteTimer
 
 
-var bullet_scene = preload("res://scripts/Bullet.gd")
+var bullet_scene = preload("res://scenes/Bullet.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
