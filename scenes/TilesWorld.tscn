@@ -202,10 +202,10 @@ margin_top = -120.0
 margin_bottom = -40.0
 
 [node name="LifeLabel" parent="Camera/UI" index="2"]
-margin_left = 220.0
-margin_top = -204.0
-margin_right = 321.0
-margin_bottom = -161.0
+margin_left = 109.0
+margin_top = -205.0
+margin_right = 210.0
+margin_bottom = -162.0
 
 [node name="BulletLabel" parent="Camera/UI" index="3"]
 visible = false
@@ -214,11 +214,17 @@ margin_top = -203.0
 margin_right = 96.0
 margin_bottom = -161.0
 
-[node name="HBoxContainer" parent="Camera/UI" index="4"]
-margin_left = -82.0
-margin_top = -202.0
-margin_right = 40.0
-margin_bottom = -162.0
+[node name="AmmoContainer" parent="Camera/UI" index="4"]
+margin_left = -72.0
+margin_top = -204.0
+margin_right = -32.0
+margin_bottom = -164.0
+
+[node name="lifeContainer" parent="Camera/UI" index="5"]
+margin_left = 209.0
+margin_top = -205.0
+margin_right = 249.0
+margin_bottom = -165.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -395, 158 )
