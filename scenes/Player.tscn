@@ -216,4 +216,7 @@ stream = ExtResource( 5 )
 [node name="PortalSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
+[node name="BulletPos" type="Position2D" parent="."]
+position = Vector2( 16, 0 )
+
 [connection signal="animation_finished" from="PlayerAnim" to="." method="_on_PlayerAnim_animation_finished"]

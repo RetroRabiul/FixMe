@@ -69,7 +69,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 1882, 24.5 )
 
-[node name="TilesWorld" type="Node2D"]
+[node name="Level1" type="Node2D"]
 position = Vector2( 37, -13 )
 script = ExtResource( 13 )
 

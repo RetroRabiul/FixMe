@@ -17,11 +17,11 @@ var used_portal = false
 
 var start_position = Vector2.ZERO
 
-var have_sword = false
-
-var player_life = 3
-
 onready var coyote_timer = $CoyoteTimer
+
+
+var bullet_scene = preload("res://scripts/Bullet.gd")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,14 +33,14 @@ func _ready():
 	GlobalSignals.connect("collected_sword", self, "_collected_sword")
 	GlobalSignals.connect("trampoline", self, "_trampoline")
 	GlobalSignals.connect("life_collected", self, "_life_collected")
-	GlobalSignals.emit_signal("change_life", player_life)
-	print(player_life)
+	GlobalSignals.emit_signal("change_life", GlobalVariables.player_life)
+	
 
 
 func _life_collected():
-	player_life += 1
-	GlobalSignals.emit_signal("change_life", player_life)
-	print(player_life)
+	GlobalVariables.player_life += 1
+	GlobalSignals.emit_signal("change_life", GlobalVariables.player_life)
+	
 
 func _trampoline():
 	$TampolineSound.play()
@@ -50,16 +50,16 @@ func _player_fall():
 	global_position = start_position
 
 func _player_reset():
-	player_life -= 1
-	GlobalSignals.emit_signal("change_life", player_life)
-	if player_life == 0 :
+	GlobalVariables.player_life -= 1
+	GlobalSignals.emit_signal("change_life", GlobalVariables.player_life)
+	if GlobalVariables.player_life == 0 :
 		get_tree().change_scene("res://scenes/GameOver.tscn")
 	else: 
 		global_position = start_position
-		print(player_life)
+		
 	
 func _collected_sword():
-	have_sword = true
+	GlobalVariables.have_sword = true
 
 func _can_fly(state):
 	flying = state
@@ -67,6 +67,14 @@ func _can_fly(state):
 func _input(event):
 	
 	direction.x = 0
+	
+	
+	if Input.is_action_just_pressed("fire"):
+		var bullet = bullet_scene.instance()
+		get_parent().add_child(bullet)
+		bullet.shoot($BulletPos.global_position, Vector2(1,0).rotated(global_rotation))
+		
+	
 	
 	if Input.is_action_pressed("left"):
 		direction.x -= speed
@@ -85,10 +93,10 @@ func _input(event):
 	else:
 		if not attacking:	
 			$PlayerAnim.play("idle")
-				
+			
 			
 		
-	if Input.is_action_just_pressed("attack") and have_sword:
+	if Input.is_action_just_pressed("attack") and GlobalVariables.have_sword:
 		attacking = true
 		$PlayerAnim.set_frame(0)
 		$AttackNode/AttackArea/CPUParticles2D.emitting = true
